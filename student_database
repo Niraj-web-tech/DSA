@@ -1,0 +1,73 @@
+#include<iostream>
+using namespace std;
+
+class student {
+int roll;
+string name;
+int marks;
+
+public:
+void read(student s[],int n);
+void sort(student s[],int n);
+void display(student s[],int n);
+};
+
+void student::read(student s[],int n)
+{
+for (int i=0;i<n;i++)
+{
+    cout<<"enter roll no"<<(i+1)<<endl;
+cin>>s[i].roll;
+cout<<"enter name"<<(i+1)<<endl;
+cin>>s[i].name;
+cout<<"enter marks"<<(i+1)<<endl;
+cin>>s[i].marks;
+}
+}
+void student::display(student s[],int n)
+{
+    for(int i=0;i<n;i++)
+    {
+        cout<<s[i].roll<<" ";
+        cout<<s[i].name<<" ";
+        cout<<s[i].marks<<" ";
+        cout<<endl;
+    }
+}
+void student::sort(student s[],int n)
+{
+    for(int i=1;i<n;i++)
+    {
+        int j;
+        student val;
+        val=s[i];
+        j=i-1;
+
+        while(j>=0 && s[j].roll>val.roll)
+        {
+        s[j+1] = s[j];
+        j=j-1;
+        }
+        s[j+1] = val;
+    }
+}
+int main() {
+     int n;
+     cout<<"enter the no of students"<<endl;
+     cin>>n;
+student s[n];
+student x;
+
+x.read(s,n);
+x.sort(s,n);
+x.display(s,n);
+return 0;
+
+}
+
+
+
+
+
+
+
