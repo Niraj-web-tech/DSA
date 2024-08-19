@@ -1,0 +1,98 @@
+#include<iostream>
+using namespace std;
+
+class student {
+    public:
+    int roll;
+    string name;
+    int marks;
+    void read(int i);
+    void display();
+    void shell_sort(student arr[],int n);
+};
+ void student::read(int i)
+ { 
+        cout<<"enter the name of student"<<i+1<<endl;
+        cin>>name;
+        cout<<"enter the roll of student"<<i+1<<endl;
+        cin>>roll;
+        cout<<"enter marks of the student"<<i+1<<endl;
+        cin>>marks;
+ } 
+ void student::display()
+ {
+        cout<<name<<" ";
+        cout<<roll<<" ";
+        cout<<marks<<" ";
+ }
+
+ void student::shell_sort(student arr[],int n)
+ { 
+    int gap = n/2;
+    while (gap>=1){
+        for(int j=gap;j<n;j++)
+        {
+            for(int i=j-gap;i>=0;i=i-gap)
+            {
+                if(arr[i+gap].roll>arr[i].roll)
+                {
+                    break;
+                }
+                else{
+                    student temp;
+                    temp=arr[i+gap];
+                    arr[i+gap]=arr[i];
+                    arr[i]=temp;
+                }
+
+            }
+        }
+        gap = gap/2;
+    }
+ }
+ int main()
+ {
+    int n; 
+    cout<<"no of students";
+    cin>>n;
+
+
+    student st[n],x; 
+    int k;
+    while(k!=4){
+        cout<<"enter choice"<<endl;
+        cout<<"1.enter record"<<endl;
+        cout<<"2.display record"<<endl;
+        cout<<"3.ascending order using shell sort"<<endl;
+        cout<<"4.exit"<<endl;
+        cin>>k;
+       
+        switch(k)
+        {
+            case 1:
+    for(int i=0;i<n;i++){
+        st[i].read(i);
+    }
+    break;
+    case 3:
+   x.shell_sort(st,n);
+   break;
+   case 2:
+   for(int i=0;i<n;i++)
+   {
+    st[i].display();
+   } 
+   break;
+ }
+ 
+ }
+ }
+
+
+
+
+
+
+
+
+
